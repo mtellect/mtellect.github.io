@@ -24,7 +24,7 @@ class ExperienceSection extends StatelessWidget {
           _experienceBlock(
             "Senior Mobile Architect",
             "eyewa",
-            "2020 — 2024 (4 Years)",
+            "March 2022 — March 2026 (4 Years)",
             AppStrings.eyewaExperience,
             [
               "assets/eyewa/mobile_eyewa_vto_demo.mp4",
