@@ -27,7 +27,7 @@ class ExperienceSection extends StatelessWidget {
             "2020 — 2024 (4 Years)",
             AppStrings.eyewaExperience,
             [
-              "assets/eyewa/mobile_eyewa_vto_demo.MP4",
+              "assets/eyewa/mobile_eyewa_vto_demo.mp4",
               "assets/eyewa/mobile_vto_arcore_android.mp4",
               "assets/eyewa/mobile_vto_arkit_ios.mp4",
             ],
