@@ -23,46 +23,44 @@ class ProjectsSection extends StatelessWidget {
         children: [
           _sectionHeader("Selected Works"),
           const SizedBox(height: 60),
-          GridView.count(
-            crossAxisCount: isMobile ? 1 : 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 40,
-            crossAxisSpacing: 40,
-            childAspectRatio: isMobile ? 0.8 : 1.2,
+          // Use a wrap instead of grid to handle different card sizes
+          Wrap(
+            spacing: 40,
+            runSpacing: 40,
+            alignment: WrapAlignment.center,
             children: [
               _projectCard(
                 "DeyChop",
                 AppStrings.deychopDesc,
-                "assets/deychop/customer_app.mov",
+                "assets/deychop/mobile_customer_app.mov",
                 FontAwesomeIcons.utensils,
                 isMobile,
               ),
               _projectCard(
                 "Along",
                 AppStrings.alongDesc,
-                "assets/along/driver_enroute_flow.mov",
+                "assets/along/mobile_driver_enroute_flow.mov",
                 FontAwesomeIcons.truckFast,
                 isMobile,
               ),
               _projectCard(
                 "Faadaakaa",
                 AppStrings.faadaakaaDesc,
-                "assets/faadaakaa/homepage_flow.mp4",
+                "assets/faadaakaa/mobile_homepage_flow.mp4",
                 FontAwesomeIcons.creditCard,
                 isMobile,
               ),
               _projectCard(
                 "StyledByEsther",
                 AppStrings.styledByEstherDesc,
-                "assets/styledbyesther/app_flow_demo.mp4",
+                "assets/styledbyesther/web_website.mp4",
                 FontAwesomeIcons.shirt,
                 isMobile,
               ),
               _projectCard(
                 "Gaamozi",
                 AppStrings.gaamoziDesc,
-                "assets/gaamozi/landing_page_web.png",
+                "assets/gaamozi/web_landing_page.png",
                 FontAwesomeIcons.box,
                 isMobile,
                 isImage: true,
@@ -70,7 +68,7 @@ class ProjectsSection extends StatelessWidget {
               _projectCard(
                 "Eyewa",
                 AppStrings.eyewaDesc,
-                "assets/eyewa/eyewa_vto_demo.MP4",
+                "assets/eyewa/mobile_eyewa_vto_demo.MP4",
                 FontAwesomeIcons.glasses,
                 isMobile,
               ),
@@ -107,8 +105,16 @@ class ProjectsSection extends StatelessWidget {
     );
   }
 
-  Widget _projectCard(String title, String description, String assetPath, IconData icon, bool isMobile, {bool isImage = false}) {
+  Widget _projectCard(String title, String description, String assetPath, IconData icon, bool isMobileScreen, {bool isImage = false}) {
+    final isWebAsset = assetPath.contains("web_");
+    final cardWidth = isMobileScreen 
+        ? double.infinity 
+        : (isWebAsset ? 800.0 : 380.0);
+    final cardHeight = isWebAsset ? 550.0 : 650.0;
+
     return Container(
+      width: cardWidth,
+      height: cardHeight,
       decoration: BoxDecoration(
         color: AppColors.background,
         borderRadius: BorderRadius.circular(20),
@@ -125,7 +131,7 @@ class ProjectsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 3,
+            flex: isWebAsset ? 4 : 5,
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
               child: SizedBox(
@@ -162,11 +168,11 @@ class ProjectsSection extends StatelessWidget {
                     child: Text(
                       description,
                       style: TextStyle(
-                        fontSize: isMobile ? 14 : 16,
+                        fontSize: 14,
                         color: AppColors.textSecondary,
                         height: 1.5,
                       ),
-                      maxLines: 4,
+                      maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -246,7 +252,8 @@ class _ProjectVideoPlayerState extends State<ProjectVideoPlayer> {
       return const Center(child: CircularProgressIndicator());
     }
     return FittedBox(
-      fit: BoxFit.cover,
+      // Ensure the video covers the area while maintaining aspect ratio
+      fit: widget.assetPath.contains("mobile_") ? BoxFit.contain : BoxFit.cover,
       child: SizedBox(
         width: _controller.value.size.width,
         height: _controller.value.size.height,

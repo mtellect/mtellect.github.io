@@ -27,10 +27,10 @@ class ExperienceSection extends StatelessWidget {
             "2020 — 2024 (4 Years)",
             AppStrings.eyewaExperience,
             [
-              "assets/eyewa/eyewa_vto_demo.MP4",
-              "assets/eyewa/eyewa_vto_demo2.MP4",
-              "assets/eyewa/vto_arcore_android.mp4",
-              "assets/eyewa/vto_arkit_ios.mp4",
+              "assets/eyewa/mobile_eyewa_vto_demo.MP4",
+              "assets/eyewa/mobile_eyewa_vto_demo2.MP4",
+              "assets/eyewa/mobile_vto_arcore_android.mp4",
+              "assets/eyewa/mobile_vto_arkit_ios.mp4",
             ],
             isMobile,
           ),
@@ -189,7 +189,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       return const Center(child: CircularProgressIndicator());
     }
     return FittedBox(
-      fit: BoxFit.cover,
+      fit: widget.assetPath.contains("mobile_") ? BoxFit.contain : BoxFit.cover,
       child: SizedBox(
         width: _controller.value.size.width,
         height: _controller.value.size.height,
