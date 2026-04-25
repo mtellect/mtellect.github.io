@@ -106,7 +106,8 @@ class ExperienceSection extends StatelessWidget {
       spacing: 20,
       runSpacing: 20,
       children: [
-        _videoCard("eyewa VTO Demo", "assets/eyewa_vto_demo.MP4", isMobile),
+        _videoCard("eyewa VTO Demo 1", "assets/eyewa_vto_demo.MP4", isMobile),
+        _videoCard("eyewa VTO Demo 2", "assets/eyewa_vto_demo2.MP4", isMobile),
         _videoCard("ARCore Android", "assets/vto_arcore_android.mp4", isMobile),
         _videoCard("ARKit iOS", "assets/vto_arkit_ios.mp4", isMobile),
       ],
