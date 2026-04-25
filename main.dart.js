@@ -66677,7 +66677,7 @@ $0(){A.nl(A.e9("resume.pdf",0,null),B.hW)},
 $S:0}
 A.Ct.prototype={
 O(a){var s=null,r=A.c3(a,s,t.w).w.a.a<800,q=r?20:100,p=t.E
-return A.ce(A.dv(A.d([A.dv(A.d([A.cs("Professional Experience",s,s,B.j5,s),B.cv,A.ce(s,s,s,new A.cz(s,s,s,A.d6(2),s,B.bN,B.a9),4,s,s,s,60)],p),B.ai),B.dH,this.Wb("Senior Mobile Architect","eyewa","2020 \u2014 2024 (4 Years)","At eyewa, I led the development of Virtual Try-On (VTO) experiences using ARCore and ARKit, enabling customers to try on eyewear digitally with high precision. I focused on performance optimization, custom rendering, and seamless cross-platform integration.",A.d(["assets/eyewa/mobile_eyewa_vto_demo.mp4","assets/eyewa/mobile_vto_arcore_android.mp4","assets/eyewa/mobile_vto_arkit_ios.mp4"],t.s),r)],p),B.ai),s,s,s,s,s,s,new A.aZ(q,100,q,100),1/0)},
+return A.ce(A.dv(A.d([A.dv(A.d([A.cs("Professional Experience",s,s,B.j5,s),B.cv,A.ce(s,s,s,new A.cz(s,s,s,A.d6(2),s,B.bN,B.a9),4,s,s,s,60)],p),B.ai),B.dH,this.Wb("Senior Mobile Architect","eyewa","March 2022 \u2014 March 2026 (4 Years)","At eyewa, I led the development of Virtual Try-On (VTO) experiences using ARCore and ARKit, enabling customers to try on eyewear digitally with high precision. I focused on performance optimization, custom rendering, and seamless cross-platform integration.",A.d(["assets/eyewa/mobile_eyewa_vto_demo.mp4","assets/eyewa/mobile_vto_arcore_android.mp4","assets/eyewa/mobile_vto_arkit_ios.mp4"],t.s),r)],p),B.ai),s,s,s,s,s,s,new A.aZ(q,100,q,100),1/0)},
 Wb(a,b,c,d,e,f){var s=null,r=t.E,q=A.d([A.o5(A.cs(a+" @ "+b,s,s,A.d_(s,s,B.z,s,s,s,s,s,s,s,s,f?24:28,s,s,B.a7,s,s,!0,s,s,s,s,s,s,s,s),s),1,s)],r)
 if(!f)q.push(A.cs(c,s,s,A.d_(s,s,B.aP,s,s,s,s,s,s,s,s,16,s,s,B.G,s,s,!0,s,s,s,s,s,s,s,s),s))
 q=A.d([A.oU(q,B.eL,B.br,0)],r)
