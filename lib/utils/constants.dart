@@ -34,4 +34,12 @@ class AppStrings {
   static const String email = "ammaugost@gmail.com";
   
   static const String resumePath = "assets/Resume_Maugost_Okore_Senior_Flutter_Engineer.pdf";
+
+  // New Project Descriptions
+  static const String faadaakaaDesc = "A sophisticated fintech e-commerce solution enabling 'Buy Now, Pay Later' (BNPL) capabilities, integrated with robust risk assessment and seamless payment gateways.";
+  static const String alongDesc = "A disruptive Peer-to-Peer (P2P) logistics ecosystem optimizing last-mile delivery through real-time tracking, intelligent routing, and collaborative courier networks.";
+  static const String eyewaDesc = "A market-leading eyewear retail platform featuring cutting-edge Virtual Try-On (VTO) technology, delivering a personalized and immersive shopping experience for luxury eyewear.";
+  static const String deychopDesc = "A comprehensive hyper-local food delivery marketplace connecting vendors, riders, and customers with a multi-app ecosystem optimized for speed and reliability.";
+  static const String gaamoziDesc = "A versatile logistics and on-demand delivery platform bridging the gap between consumers and essential services, from medical supplies and groceries to household energy.";
+  static const String styledByEstherDesc = "A high-end fashion e-commerce experience blending luxury aesthetics with intuitive commerce workflows, built for the modern fashion-conscious consumer.";
 }

@@ -19,9 +19,21 @@ class ExperienceSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionHeader("Experience"),
+          _sectionHeader("Professional Experience"),
           const SizedBox(height: 60),
-          _eyewaHighlight(isMobile),
+          _experienceBlock(
+            "Senior Flutter Engineer",
+            "eyewa",
+            "2020 — 2024 (4 Years)",
+            AppStrings.eyewaExperience,
+            [
+              "assets/eyewa/eyewa_vto_demo.MP4",
+              "assets/eyewa/eyewa_vto_demo2.MP4",
+              "assets/eyewa/vto_arcore_android.mp4",
+              "assets/eyewa/vto_arkit_ios.mp4",
+            ],
+            isMobile,
+          ),
         ],
       ),
     );
@@ -52,34 +64,48 @@ class ExperienceSection extends StatelessWidget {
     );
   }
 
-  Widget _eyewaHighlight(bool isMobile) {
+  Widget _experienceBlock(String role, String company, String period, String description, List<String> videos, bool isMobile) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Senior Flutter Engineer @ eyewa",
-              style: TextStyle(
-                fontSize: isMobile ? 24 : 28,
-                fontWeight: FontWeight.bold,
-                color: AppColors.primary,
+            Expanded(
+              child: Text(
+                "$role @ $company",
+                style: TextStyle(
+                  fontSize: isMobile ? 24 : 28,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primary,
+                ),
               ),
             ),
-            const Spacer(),
-            Text(
-              "2020 — 2024 (4 Years)",
-              style: TextStyle(
-                fontSize: 16,
-                color: AppColors.textSecondary,
-                fontWeight: FontWeight.w500,
+            if (!isMobile)
+              Text(
+                period,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
           ],
         ),
+        if (isMobile) ...[
+          const SizedBox(height: 5),
+          Text(
+            period,
+            style: TextStyle(
+              fontSize: 14,
+              color: AppColors.textSecondary,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
         const SizedBox(height: 30),
         Text(
-          AppStrings.eyewaExperience,
+          description,
           style: const TextStyle(
             fontSize: 18,
             color: AppColors.textSecondary,
@@ -96,56 +122,32 @@ class ExperienceSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 30),
-        _videoGallery(isMobile),
+        SizedBox(
+          height: 550,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: videos.length,
+            separatorBuilder: (context, index) => const SizedBox(width: 20),
+            itemBuilder: (context, index) => _videoCard(videos[index], isMobile),
+          ),
+        ),
       ],
     );
   }
 
-  Widget _videoGallery(bool isMobile) {
-    return Wrap(
-      spacing: 20,
-      runSpacing: 20,
-      children: [
-        _videoCard("eyewa VTO Demo 1", "assets/eyewa_vto_demo.MP4", isMobile),
-        _videoCard("eyewa VTO Demo 2", "assets/eyewa_vto_demo2.MP4", isMobile),
-        _videoCard("ARCore Android", "assets/vto_arcore_android.mp4", isMobile),
-        _videoCard("ARKit iOS", "assets/vto_arkit_ios.mp4", isMobile),
-      ],
-    );
-  }
-
-  Widget _videoCard(String title, String assetPath, bool isMobile) {
+  Widget _videoCard(String assetPath, bool isMobile) {
     return Container(
-      width: isMobile ? double.infinity : 350,
+      width: 300,
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(color: Colors.white.withOpacity(0.05)),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-            child: SizedBox(
-              height: 500,
-              child: VideoPlayerWidget(assetPath: assetPath),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
-            ),
-          ),
-        ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: VideoPlayerWidget(assetPath: assetPath),
       ),
-    ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.1);
+    ).animate().fadeIn(duration: 500.ms).slideX(begin: 0.1);
   }
 }
 
@@ -169,7 +171,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         setState(() {
           _isInitialized = true;
           _controller.setLooping(true);
-          _controller.setVolume(0); // Muted for autoplay
+          _controller.setVolume(0);
           _controller.play();
         });
       });
@@ -186,9 +188,13 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     if (!_isInitialized) {
       return const Center(child: CircularProgressIndicator());
     }
-    return AspectRatio(
-      aspectRatio: _controller.value.aspectRatio,
-      child: VideoPlayer(_controller),
+    return FittedBox(
+      fit: BoxFit.cover,
+      child: SizedBox(
+        width: _controller.value.size.width,
+        height: _controller.value.size.height,
+        child: VideoPlayer(_controller),
+      ),
     );
   }
 }

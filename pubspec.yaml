@@ -48,7 +48,9 @@ flutter:
   assets:
     - assets/passport_photo.png
     - assets/Resume_Maugost_Okore_Senior_Flutter_Engineer.pdf
-    - assets/eyewa_vto_demo.MP4
-    - assets/eyewa_vto_demo2.MP4
-    - assets/vto_arcore_android.mp4
-    - assets/vto_arkit_ios.mp4
+    - assets/along/
+    - assets/deychop/
+    - assets/eyewa/
+    - assets/faadaakaa/
+    - assets/gaamozi/
+    - assets/styledbyesther/
