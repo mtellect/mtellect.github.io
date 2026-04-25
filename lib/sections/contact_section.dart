@@ -169,11 +169,11 @@ class ContactSection extends StatelessWidget {
 
   Widget _resumeButton() {
     return ElevatedButton.icon(
-      onPressed: () async {
-        final url = Uri.parse(AppStrings.resumePath);
-        if (await canLaunchUrl(url)) {
-          await launchUrl(url);
-        }
+      onPressed: () {
+        launchUrl(
+          Uri.parse(AppStrings.resumePath),
+          mode: LaunchMode.externalApplication,
+        );
       },
       icon: const Icon(Icons.download),
       label: const Text("Download Resume"),

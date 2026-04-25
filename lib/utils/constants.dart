@@ -34,7 +34,7 @@ class AppStrings {
   static const String whatsappNumber = "+2348143733836";
   static const String email = "ammaugost@gmail.com";
   
-  static const String resumePath = "assets/Resume_Maugost_Okore_Senior_Flutter_Engineer.pdf";
+  static const String resumePath = "resume.pdf";
 
   // New Project Descriptions
   static const String faadaakaaDesc = "A sophisticated fintech e-commerce solution enabling 'Buy Now, Pay Later' (BNPL) capabilities, integrated with robust risk assessment and seamless payment gateways.";

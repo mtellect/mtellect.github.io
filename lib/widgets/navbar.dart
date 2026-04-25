@@ -73,13 +73,11 @@ class Navbar extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: ElevatedButton(
-        onPressed: () async {
-          final url = Uri.parse(AppStrings.resumePath);
-          // For local assets in web, we might need a different strategy, 
-          // but usually they can be served.
-          if (await canLaunchUrl(url)) {
-            await launchUrl(url);
-          }
+        onPressed: () {
+          launchUrl(
+            Uri.parse(AppStrings.resumePath),
+            mode: LaunchMode.externalApplication,
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,

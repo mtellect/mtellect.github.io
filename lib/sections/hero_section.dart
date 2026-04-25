@@ -85,6 +85,23 @@ class HeroSection extends StatelessWidget {
         Row(
           mainAxisAlignment: isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
           children: [
+            ElevatedButton.icon(
+              onPressed: () {
+                launchUrl(
+                  Uri.parse(AppStrings.resumePath),
+                  mode: LaunchMode.externalApplication,
+                );
+              },
+              icon: const Icon(Icons.download),
+              label: const Text("Download Resume"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 18),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+            const SizedBox(width: 20),
             _socialIcon(FontAwesomeIcons.github, AppStrings.githubUrl),
             _socialIcon(FontAwesomeIcons.whatsapp, "https://wa.me/2348143733836"),
             _socialIcon(FontAwesomeIcons.envelope, "mailto:${AppStrings.email}"),
