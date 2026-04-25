@@ -22,13 +22,12 @@ class ExperienceSection extends StatelessWidget {
           _sectionHeader("Professional Experience"),
           const SizedBox(height: 60),
           _experienceBlock(
-            "Senior Flutter Engineer",
+            "Senior Mobile Architect",
             "eyewa",
             "2020 — 2024 (4 Years)",
             AppStrings.eyewaExperience,
             [
               "assets/eyewa/mobile_eyewa_vto_demo.MP4",
-              "assets/eyewa/mobile_eyewa_vto_demo2.MP4",
               "assets/eyewa/mobile_vto_arcore_android.mp4",
               "assets/eyewa/mobile_vto_arkit_ios.mp4",
             ],

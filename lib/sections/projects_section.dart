@@ -20,46 +20,29 @@ class ProjectsSection extends StatelessWidget {
         children: [
           _sectionHeader("Selected Works"),
           const SizedBox(height: 60),
-          // Use a wrap instead of grid to handle different card sizes
           Wrap(
             spacing: 40,
             runSpacing: 40,
             alignment: WrapAlignment.center,
             children: [
               _projectCard(
-                "Eyewa",
-                AppStrings.eyewaDesc,
-                "assets/eyewa/mobile_walkthrough.MP4",
-                FontAwesomeIcons.glasses,
-                isMobile,
-              ),
-              _projectCard(
-                "Eyewa",
+                "Eyewa VTO",
                 AppStrings.eyewaDesc,
                 "assets/eyewa/mobile_vto_pdp_demo.MP4",
                 FontAwesomeIcons.glasses,
                 isMobile,
               ),
-
-              _projectCard(
-                "Eyewa",
-                AppStrings.eyewaDesc,
-                "assets/eyewa/mobile_cart_demo.mp4",
-                FontAwesomeIcons.glasses,
-                isMobile,
-              ),
-
               _projectCard(
                 "DeyChop",
                 AppStrings.deychopDesc,
-                "assets/deychop/mobile_customer_app.mov",
+                "assets/deychop/mobile_vendor_flow.mp4",
                 FontAwesomeIcons.utensils,
                 isMobile,
               ),
               _projectCard(
                 "Along",
                 AppStrings.alongDesc,
-                "assets/along/mobile_driver_enroute_flow.mov",
+                "assets/along/mobile_stripe_connect_flow.mov",
                 FontAwesomeIcons.truckFast,
                 isMobile,
               ),
@@ -68,21 +51,6 @@ class ProjectsSection extends StatelessWidget {
                 AppStrings.faadaakaaDesc,
                 "assets/faadaakaa/mobile_homepage_flow.mp4",
                 FontAwesomeIcons.creditCard,
-                isMobile,
-              ),
-
-              _projectCard(
-                "StyledByEsther",
-                AppStrings.styledByEstherDesc,
-                "assets/styledbyesther/mobile_app_flow_demo.mp4",
-                FontAwesomeIcons.glasses,
-                isMobile,
-              ),
-              _projectCard(
-                "StyledByEsther",
-                AppStrings.styledByEstherDesc,
-                "assets/styledbyesther/mobile_homepage_demo.mp4",
-                FontAwesomeIcons.glasses,
                 isMobile,
               ),
               _projectCard(
