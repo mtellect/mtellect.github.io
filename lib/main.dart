@@ -18,7 +18,7 @@ class MyPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Maugost Okore | Senior Flutter Engineer',
+      title: 'Maugost Okore | Senior Mobile Architect',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,

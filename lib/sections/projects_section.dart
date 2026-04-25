@@ -15,10 +15,7 @@ class ProjectsSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: AppColors.surface.withOpacity(0.3),
-      padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? 20 : 100,
-        vertical: 100,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: isMobile ? 20 : 100, vertical: 100),
       child: Column(
         children: [
           _sectionHeader("Selected Works"),
@@ -29,6 +26,29 @@ class ProjectsSection extends StatelessWidget {
             runSpacing: 40,
             alignment: WrapAlignment.center,
             children: [
+              _projectCard(
+                "Eyewa",
+                AppStrings.eyewaDesc,
+                "assets/eyewa/mobile_walkthrough.MP4",
+                FontAwesomeIcons.glasses,
+                isMobile,
+              ),
+              _projectCard(
+                "Eyewa",
+                AppStrings.eyewaDesc,
+                "assets/eyewa/mobile_vto_pdp_demo.MP4",
+                FontAwesomeIcons.glasses,
+                isMobile,
+              ),
+
+              _projectCard(
+                "Eyewa",
+                AppStrings.eyewaDesc,
+                "assets/eyewa/mobile_cart_demo.mp4",
+                FontAwesomeIcons.glasses,
+                isMobile,
+              ),
+
               _projectCard(
                 "DeyChop",
                 AppStrings.deychopDesc,
@@ -50,6 +70,21 @@ class ProjectsSection extends StatelessWidget {
                 FontAwesomeIcons.creditCard,
                 isMobile,
               ),
+
+              _projectCard(
+                "StyledByEsther",
+                AppStrings.styledByEstherDesc,
+                "assets/styledbyesther/mobile_app_flow_demo.mp4",
+                FontAwesomeIcons.glasses,
+                isMobile,
+              ),
+              _projectCard(
+                "StyledByEsther",
+                AppStrings.styledByEstherDesc,
+                "assets/styledbyesther/mobile_homepage_demo.mp4",
+                FontAwesomeIcons.glasses,
+                isMobile,
+              ),
               _projectCard(
                 "StyledByEsther",
                 AppStrings.styledByEstherDesc,
@@ -64,13 +99,6 @@ class ProjectsSection extends StatelessWidget {
                 FontAwesomeIcons.box,
                 isMobile,
                 isImage: true,
-              ),
-              _projectCard(
-                "Eyewa",
-                AppStrings.eyewaDesc,
-                "assets/eyewa/mobile_eyewa_vto_demo.MP4",
-                FontAwesomeIcons.glasses,
-                isMobile,
               ),
             ],
           ),
@@ -105,11 +133,16 @@ class ProjectsSection extends StatelessWidget {
     );
   }
 
-  Widget _projectCard(String title, String description, String assetPath, IconData icon, bool isMobileScreen, {bool isImage = false}) {
+  Widget _projectCard(
+    String title,
+    String description,
+    String assetPath,
+    IconData icon,
+    bool isMobileScreen, {
+    bool isImage = false,
+  }) {
     final isWebAsset = assetPath.contains("web_");
-    final cardWidth = isMobileScreen 
-        ? double.infinity 
-        : (isWebAsset ? 800.0 : 380.0);
+    final cardWidth = isMobileScreen ? double.infinity : (isWebAsset ? 800.0 : 380.0);
     final cardHeight = isWebAsset ? 550.0 : 650.0;
 
     return Container(
@@ -167,11 +200,7 @@ class ProjectsSection extends StatelessWidget {
                   Expanded(
                     child: Text(
                       description,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.textSecondary,
-                        height: 1.5,
-                      ),
+                      style: TextStyle(fontSize: 14, color: AppColors.textSecondary, height: 1.5),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),

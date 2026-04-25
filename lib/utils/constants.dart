@@ -18,11 +18,12 @@ class AppColors {
 
 class AppStrings {
   static const String name = "Maugost Okore";
-  static const String title = "Senior Flutter Engineer";
+  static const String title = "Senior Mobile Architect";
   static const String introduction = 
-      "I am a Senior Flutter Engineer with over 4 years of experience building high-performance, "
-      "visually stunning mobile and web applications. Specialized in complex UI/UX, Virtual Try-On (VTO) "
-      "technologies, and full-stack development with Serverpod.";
+      "I am a Senior Mobile Architect with 12 years of experience specializing in high-scale ecosystems. "
+      "I lead the development of performant, visually stunning applications, with deep expertise in Flutter, "
+      "Native bridging (Swift/Java), and Virtual Try-On (VTO) technologies. From architecting eyewa’s V1/V2 platforms "
+      "to building full-stack Dart solutions with Serverpod, I focus on 'jank-free' performance and 99.9% crash-free reliability.";
       
   static const String eyewaExperience = 
       "At eyewa, I led the development of Virtual Try-On (VTO) experiences using ARCore and ARKit, "
