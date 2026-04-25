@@ -260,12 +260,14 @@ class _ProjectVideoPlayerState extends State<ProjectVideoPlayer> {
     super.initState();
     _controller = VideoPlayerController.asset(widget.assetPath)
       ..initialize().then((_) {
-        setState(() {
-          _isInitialized = true;
-          _controller.setLooping(true);
-          _controller.setVolume(0);
-          _controller.play();
-        });
+        if (mounted) {
+          setState(() {
+            _isInitialized = true;
+            _controller.setLooping(true);
+            _controller.setVolume(0);
+            _controller.play();
+          });
+        }
       });
   }
 
@@ -277,17 +279,36 @@ class _ProjectVideoPlayerState extends State<ProjectVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_isInitialized) {
-      return const Center(child: CircularProgressIndicator());
-    }
-    return FittedBox(
-      // Ensure the video covers the area while maintaining aspect ratio
-      fit: widget.assetPath.contains("mobile_") ? BoxFit.contain : BoxFit.cover,
-      child: SizedBox(
-        width: _controller.value.size.width,
-        height: _controller.value.size.height,
-        child: VideoPlayer(_controller),
-      ),
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 800),
+      child: !_isInitialized
+          ? Container(
+              key: const ValueKey('loading'),
+              width: double.infinity,
+              height: double.infinity,
+              color: AppColors.surface,
+              child: Center(
+                child: Icon(
+                  Icons.play_circle_outline,
+                  color: AppColors.primary.withOpacity(0.2),
+                  size: 50,
+                ),
+              ),
+            ).animate(onPlay: (controller) => controller.repeat())
+              .shimmer(duration: 1500.ms, color: AppColors.primary.withOpacity(0.1))
+          : Container(
+              key: const ValueKey('video'),
+              width: double.infinity,
+              height: double.infinity,
+              child: FittedBox(
+                fit: widget.assetPath.contains("mobile_") ? BoxFit.contain : BoxFit.cover,
+                child: SizedBox(
+                  width: _controller.value.size.width,
+                  height: _controller.value.size.height,
+                  child: VideoPlayer(_controller),
+                ),
+              ),
+            ),
     );
   }
 }
