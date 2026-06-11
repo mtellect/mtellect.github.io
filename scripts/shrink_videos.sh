@@ -15,7 +15,7 @@ find assets -type f \( -name "*.mp4" -o -name "*.MP4" -o -name "*.mov" \) -print
     
     # Shrink using ffmpeg
     # Redirect stdin from /dev/null to prevent ffmpeg from eating the 'find' output
-    ffmpeg -i "$file" -vcodec libx264 -crf 28 -preset faster -vf "scale='min(720,iw)':-2" -y "$output" < /dev/null
+    ffmpeg -i "$file" -vcodec libx264 -crf 26 -preset faster -r 30 -an -movflags +faststart -y "$output" < /dev/null
     
     # Check if ffmpeg succeeded
     if [ $? -eq 0 ]; then
