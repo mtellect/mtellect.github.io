@@ -26,11 +26,17 @@ class ProjectsSection extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               _projectCard(
-                "Eyewa VTO",
+                "Eyewa",
                 AppStrings.eyewaDesc,
                 "assets/eyewa/mobile_vto_pdp_demo.mp4",
                 FontAwesomeIcons.glasses,
                 isMobile,
+                storeLinks: {
+                  "Eyewa (iOS)": "https://apps.apple.com/us/app/eyewa-eyewear-shopping-app/id1463605579",
+                  "Eyewa (Android)": "https://play.google.com/store/apps/details?id=com.eyewa.app",
+                  "Optical Club (iOS)": "https://apps.apple.com/sa/app/optical-club-by-eyewa/id6740026550",
+                  "Optical Club (Android)": "https://play.google.com/store/apps/details?id=com.eyewa.app.toc",
+                },
               ),
               _projectCard(
                 "DeyChop",
@@ -38,6 +44,14 @@ class ProjectsSection extends StatelessWidget {
                 "assets/deychop/mobile_general_flow.mp4",
                 FontAwesomeIcons.utensils,
                 isMobile,
+                storeLinks: {
+                  "Customer (iOS)": "https://apps.apple.com/us/app/deychop/id6754430367",
+                  "Customer (Android)": "https://play.google.com/store/apps/details?id=com.deychopuser.app",
+                  "Vendor (iOS)": "https://apps.apple.com/ng/app/deychop-vendor/id6751862577",
+                  "Vendor (Android)": "https://play.google.com/store/apps/details?id=com.deychopvendor.app",
+                  "Rider (iOS)": "https://apps.apple.com/ng/app/deychop-rider/id6752674082",
+                  "Rider (Android)": "https://play.google.com/store/apps/details?id=com.deychoprider.app",
+                },
               ),
               _projectCard(
                 "Along",
@@ -108,6 +122,7 @@ class ProjectsSection extends StatelessWidget {
     IconData icon,
     bool isMobileScreen, {
     bool isImage = false,
+    Map<String, String>? storeLinks,
   }) {
     final isWebAsset = assetPath.contains("web_");
     final cardWidth = isMobileScreen ? double.infinity : (isWebAsset ? 800.0 : 380.0);
@@ -173,6 +188,38 @@ class ProjectsSection extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                  if (storeLinks != null && storeLinks.isNotEmpty) ...[
+                    const SizedBox(height: 10),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: storeLinks.entries.map((entry) {
+                          final isIos = entry.key.toLowerCase().contains('ios');
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: OutlinedButton.icon(
+                              icon: FaIcon(
+                                isIos ? FontAwesomeIcons.apple : FontAwesomeIcons.googlePlay,
+                                size: 14,
+                                color: AppColors.textSecondary,
+                              ),
+                              label: Text(
+                                entry.key,
+                                style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                              ),
+                              onPressed: () {
+                                launchUrl(Uri.parse(entry.value), mode: LaunchMode.externalApplication);
+                              },
+                              style: OutlinedButton.styleFrom(
+                                side: BorderSide(color: AppColors.textSecondary.withOpacity(0.3)),
+                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
