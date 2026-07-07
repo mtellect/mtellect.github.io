@@ -20,10 +20,10 @@ class AppStrings {
   static const String name = "Maugost Okore";
   static const String title = "Senior Mobile Architect";
   static const String introduction = 
-      "I am a Senior Mobile Architect with more than a decade of experience specializing in high-scale ecosystems. "
-      "I led the development of performant, visually stunning applications, with deep expertise in Flutter, "
-      "Native bridging (Swift/Java), and Virtual Try-On (VTO) technologies. From architecting eyewa’s V1/V2 platforms "
-      "to building full-stack Dart solutions with Serverpod, I focus on 'jank-free' performance and 99.9% crash-free reliability.";
+      "I am a Senior Mobile Architect with over a decade of experience specializing in high-scale ecosystems. "
+      "I lead the development of performant, visually stunning applications with deep expertise in Flutter, "
+      "Native bridging, and full-stack Dart solutions. From architecting eyewa’s V1/V2 platforms featuring Virtual Try-On (VTO) "
+      "to building Deychop’s comprehensive multi-app delivery marketplace, I focus on 'jank-free' performance and 99.9% crash-free reliability.";
       
   static const String eyewaExperience = 
       "At eyewa, I led the development of Virtual Try-On (VTO) experiences using ARCore and ARKit, "
