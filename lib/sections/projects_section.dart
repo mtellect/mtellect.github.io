@@ -119,7 +119,7 @@ class ProjectsSection extends StatelessWidget {
     String title,
     String description,
     String assetPath,
-    IconData icon,
+    dynamic icon,
     bool isMobileScreen, {
     bool isImage = false,
     Map<String, String>? storeLinks,
@@ -167,7 +167,7 @@ class ProjectsSection extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(icon, color: AppColors.primary, size: 20),
+                      FaIcon(icon, color: AppColors.primary, size: 20),
                       const SizedBox(width: 10),
                       Text(
                         title,

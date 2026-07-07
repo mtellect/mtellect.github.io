@@ -133,7 +133,7 @@ class HeroSection extends StatelessWidget {
     ).animate().fadeIn(duration: 800.ms).scale();
   }
 
-  Widget _socialIcon(IconData icon, String url) {
+  Widget _socialIcon(FaIconData icon, String url) {
     return Padding(
       padding: const EdgeInsets.only(right: 20),
       child: IconButton(

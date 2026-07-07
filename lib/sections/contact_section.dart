@@ -83,7 +83,7 @@ class ContactSection extends StatelessWidget {
     );
   }
 
-  Widget _contactCard(String platform, String value, IconData icon, String url, Color color) {
+  Widget _contactCard(String platform, String value, dynamic icon, String url, Color color) {
     return InkWell(
       onTap: () async {
         final uri = Uri.parse(url);
@@ -98,7 +98,7 @@ class ContactSection extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: color.withOpacity(0.2)),
+          border: Border.all(color: color.withValues(alpha: 0.2)),
         ),
         child: Column(
           children: [
