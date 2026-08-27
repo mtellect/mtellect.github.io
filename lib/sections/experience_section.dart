@@ -18,9 +18,18 @@ class ExperienceSection extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 60,
         children: [
           _sectionHeader("Professional Experience"),
-          const SizedBox(height: 60),
+          _experienceBlock(
+            "Engineering Manager | FullStack Flutter",
+            "DeyChop",
+            "April 2026 - Present (6 Months)",
+            AppStrings.deychopExperience,
+            ["assets/deychop/customer_vendor_rider_flow.mp4"],
+            false,
+            fullWidth: true,
+          ),
           _experienceBlock(
             "Senior Mobile Architect",
             "eyewa",
@@ -63,7 +72,15 @@ class ExperienceSection extends StatelessWidget {
     );
   }
 
-  Widget _experienceBlock(String role, String company, String period, String description, List<String> videos, bool isMobile) {
+  Widget _experienceBlock(
+    String role,
+    String company,
+    String period,
+    String description,
+    List<String> videos,
+    bool isMobile, {
+    bool fullWidth = false,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -121,17 +138,31 @@ class ExperienceSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 30),
-        SizedBox(
-          height: 550,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: videos.length,
-            separatorBuilder: (context, index) => const SizedBox(width: 20),
-            itemBuilder: (context, index) => _videoCard(videos[index], isMobile),
+        if (fullWidth)
+          _fullWidthVideo(videos.first)
+        else
+          SizedBox(
+            height: 550,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: videos.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 20),
+              itemBuilder: (context, index) =>
+                  _videoCard(videos[index], isMobile),
+            ),
           ),
-        ),
       ],
     );
+  }
+
+  Widget _fullWidthVideo(String assetPath) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: VideoPlayerWidget(assetPath: assetPath, fullWidth: true),
+      ),
+    ).animate().fadeIn(duration: 500.ms).slideX(begin: 0.1);
   }
 
   Widget _videoCard(String assetPath, bool isMobile) {
@@ -152,7 +183,8 @@ class ExperienceSection extends StatelessWidget {
 
 class VideoPlayerWidget extends StatefulWidget {
   final String assetPath;
-  const VideoPlayerWidget({super.key, required this.assetPath});
+  final bool fullWidth;
+  const VideoPlayerWidget({super.key, required this.assetPath, this.fullWidth = false});
 
   @override
   State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
@@ -190,25 +222,32 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       duration: const Duration(milliseconds: 800),
       child: !_isInitialized
           ? Container(
-              key: const ValueKey('loading'),
-              width: double.infinity,
-              height: double.infinity,
-              color: AppColors.surface,
-              child: Center(
-                child: Icon(
-                  Icons.play_circle_outline,
-                  color: AppColors.primary.withOpacity(0.2),
-                  size: 50,
-                ),
-              ),
-            ).animate(onPlay: (controller) => controller.repeat())
-              .shimmer(duration: 1500.ms, color: AppColors.primary.withOpacity(0.1))
-          : Container(
+                  key: const ValueKey('loading'),
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: AppColors.surface,
+                  child: Center(
+                    child: Icon(
+                      Icons.play_circle_outline,
+                      color: AppColors.primary.withOpacity(0.2),
+                      size: 50,
+                    ),
+                  ),
+                )
+                .animate(onPlay: (controller) => controller.repeat())
+                .shimmer(
+                  duration: 1500.ms,
+                  color: AppColors.primary.withOpacity(0.1),
+                )
+          : SizedBox(
               key: const ValueKey('video'),
               width: double.infinity,
               height: double.infinity,
               child: FittedBox(
-                fit: widget.assetPath.contains("mobile_") ? BoxFit.contain : BoxFit.cover,
+                fit: widget.fullWidth ||
+                        widget.assetPath.contains("mobile_")
+                    ? BoxFit.contain
+                    : BoxFit.cover,
                 child: SizedBox(
                   width: _controller.value.size.width,
                   height: _controller.value.size.height,

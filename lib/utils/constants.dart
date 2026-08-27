@@ -30,6 +30,13 @@ class AppStrings {
       "enabling customers to try on eyewear digitally with high precision. I focused on performance optimization, "
       "custom rendering, and seamless cross-platform integration.";
 
+  static const String deychopExperience =
+      "At DeyChop, I architected a multi-sided food delivery and logistics marketplace connecting customers, "
+      "vendors, riders, and admins across a monorepo of four packages. Built on Flutter and Serverpod with "
+      "PostgreSQL, I designed a unified cart across personal, gift, and shopping-list orders, a KYC onboarding "
+      "workflow with per-step review, wallets with Paystack payments and payouts, and a realtime dispatch system "
+      "driven by Serverpod streams and FCM push for live order tracking and delivery offers.";
+
   static const String githubUrl = "https://github.com/mtellect";
   static const String whatsappNumber = "+2348143733836";
   static const String email = "ammaugost@gmail.com";
