@@ -130,7 +130,7 @@ class ExperienceSection extends StatelessWidget {
         ),
         const SizedBox(height: 50),
         Text(
-          "Virtual Try-On (VTO) Showcase",
+          "Showcase",
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -184,7 +184,11 @@ class ExperienceSection extends StatelessWidget {
 class VideoPlayerWidget extends StatefulWidget {
   final String assetPath;
   final bool fullWidth;
-  const VideoPlayerWidget({super.key, required this.assetPath, this.fullWidth = false});
+  const VideoPlayerWidget({
+    super.key,
+    required this.assetPath,
+    this.fullWidth = false,
+  });
 
   @override
   State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
@@ -244,8 +248,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
               width: double.infinity,
               height: double.infinity,
               child: FittedBox(
-                fit: widget.fullWidth ||
-                        widget.assetPath.contains("mobile_")
+                fit: widget.fullWidth || widget.assetPath.contains("mobile_")
                     ? BoxFit.contain
                     : BoxFit.cover,
                 child: SizedBox(
